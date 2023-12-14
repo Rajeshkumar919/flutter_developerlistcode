@@ -1,0 +1,62 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class Developer {
+  final String name;
+  final String position;
+  final String image;
+
+  Developer({required this.name, required this.position, required this.image});
+}
+
+class MyApp extends StatelessWidget {
+  final List<Developer> developers = [
+    Developer(
+        name: 'raja',
+        position: 'Software Developer',
+        image: 'assets/john_doe.jpg'),
+    Developer(
+        name: 'Jane Smith',
+        position: 'Android Developer',
+        image: 'assets/jane_smith.jpg'),
+    Developer(
+        name: 'Jane Smith',
+        position: 'Android Developer',
+        image: 'assets/jane_smith.jpg'),
+    Developer(
+        name: 'Jane Smith',
+        position: 'Android Developer',
+        image: 'assets/jane_smith.jpg'),
+    Developer(
+        name: 'Jane Smith',
+        position: 'Android Developer',
+        image: 'assets/jane_smith.jpg'),
+    // Add more developers here
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Developers List'),
+        ),
+        body: ListView.builder(
+          itemCount: developers.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(developers[index].image),
+              ),
+              title: Text(developers[index].name),
+              subtitle: Text(developers[index].position),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
